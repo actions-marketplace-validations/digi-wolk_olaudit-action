@@ -5,7 +5,7 @@
 [![Contributors](https://img.shields.io/github/contributors/digi-wolk/olaudit-action?color=blue&style=flat-square)](https://github.com/digi-wolk/olaudit-action/graphs/contributors)
 
 
-![olAudit Github PR Comment.png](assets/screenshots/olaudit-github-pr-comment-1.png)
+![olAudit Github PR Comment.png](assets/screenshots/olaudit-github-pr-comment-1.png?v=1)
 
 </div>
 
@@ -32,7 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: OSS License Auditor
-        uses: digi-wolk/olaudit@v1
+        uses: digi-wolk/olaudit-action@v1
         with:
           path: .
           comment-on-pr: true
@@ -83,7 +83,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: OSS License Auditor
-        uses: digi-wolk/olaudit@v1
+        uses: digi-wolk/olaudit-action@v1
         with:
           path: .
           comment-on-pr: true
@@ -101,3 +101,34 @@ jobs:
 | verbose            | no       | false   | Show verbose output (debugging)                            |
 | github-token       | no       |         | GitHub token to use for commenting on PRs                  |
 
+# Release a new version
+Code owners can create a release by tagging the version as follows:
+First create a major release branch from the master branch and push it:
+```bash
+git checkout -b release/v1
+git push origin release/v1
+```
+Or checkout to it if it already exists and pull the latest changes:
+```bash
+git checkout release/v1
+git pull origin release/v1
+```
+If needed, you can fetch changes from master back to the release branch:
+```bash
+git checkout release/v1
+git merge master
+git push origin release/v1
+```
+Then create a tag and push it to the release branch:
+```bash
+# Update the version before running the command
+RELEASE_VERSION="v1.0.0"
+git tag "${RELEASE_VERSION}" -m "Minor release: ${RELEASE_VERSION}"
+git push origin "${RELEASE_VERSION}"
+```
+Then move the major version tag (for example v1) to point to the Git ref of the current release:
+```bash
+git tag -fa v1 -m "Major release: v1"
+git push origin v1 --force
+```
+Then remember to push to Github Marketplace by releasing manually from the GUI.
