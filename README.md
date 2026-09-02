@@ -1,3 +1,9 @@
+> [!WARNING]
+> ## ⚠️ DEPRECATED
+> **This Action is deprecated and no longer maintained.** Thank you for using it!
+>
+> Please migrate to **[Open License Auditor](https://github.com/marketplace/actions/open-license-auditor)**, the new official action — it has better coverage, is faster, and is safer.
+
 <div align="center">
 
 [![License](https://img.shields.io/github/license/digi-wolk/olaudit-action?color=blue&label=License&style=flat-square)](https://github.com/digi-wolk/olaudit-action/blob/main/LICENSE.md)
